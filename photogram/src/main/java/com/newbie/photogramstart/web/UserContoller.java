@@ -18,8 +18,6 @@ public class UserContoller {
 	
 	@GetMapping("/user/{id}/update")
 	public String update(@PathVariable int id,@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		System.out.println("세션정보 : "+principalDetails.getUser());
-		
 		return "/user/update";
 	}
 }
