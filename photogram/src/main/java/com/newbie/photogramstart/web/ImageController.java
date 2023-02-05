@@ -1,7 +1,12 @@
 package com.newbie.photogramstart.web;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.newbie.photogramstart.config.auth.PrincipalDetails;
+import com.newbie.photogramstart.web.dto.image.ImageUploadDto;
 
 @Controller
 public class ImageController {
@@ -19,5 +24,12 @@ public class ImageController {
 	@GetMapping("/image/upload")
 	public String upload() {
 		return "image/upload";
+	}
+	
+	@PostMapping("/image")
+	public String imageUpload(ImageUploadDto imageUploadDto,@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		//서비스 호출
+		
+		return "redirect:/user/"+principalDetails.getUser().getId();
 	}
 }
