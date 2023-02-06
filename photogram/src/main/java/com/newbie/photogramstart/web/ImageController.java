@@ -6,10 +6,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.newbie.photogramstart.config.auth.PrincipalDetails;
+import com.newbie.photogramstart.service.ImageService;
 import com.newbie.photogramstart.web.dto.image.ImageUploadDto;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class ImageController {
+	
+	private final ImageService imageService;
 	
 	@GetMapping({"/","/image/story"})
 	public String story() {
@@ -29,6 +35,7 @@ public class ImageController {
 	@PostMapping("/image")
 	public String imageUpload(ImageUploadDto imageUploadDto,@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		//서비스 호출
+		imageService.사진업로드(imageUploadDto, principalDetails);
 		
 		return "redirect:/user/"+principalDetails.getUser().getId();
 	}
