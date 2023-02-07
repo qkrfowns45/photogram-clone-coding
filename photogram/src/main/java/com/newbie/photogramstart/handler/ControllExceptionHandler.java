@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.newbie.photogramstart.handler.ex.CustomApiException;
+import com.newbie.photogramstart.handler.ex.CustomException;
 import com.newbie.photogramstart.handler.ex.CustomValidationApiException;
 import com.newbie.photogramstart.handler.ex.CustomValidationException;
 import com.newbie.photogramstart.util.Script;
@@ -24,9 +25,16 @@ public class ControllExceptionHandler {
 		//1.클라이언트에게 응답할 때는 Script 좋음
 		//2.Ajax통신 - CMRespDto
 		//3.Android 통신 - CMRespDto
-		
+		if(e.getErrorMap() == null) {
+			return Script.back(e.getMessage());
+		}
 		return Script.back(e.getErrorMap().toString());
 		//return new CMRespDto<Map<String,String>>(-1,e.getMessage(),e.getErrorMap());
+	}
+	
+	@ExceptionHandler(CustomException.class)
+	public String exception(CustomException e) {
+		return Script.back(e.getMessage());
 	}
 	
 	@ExceptionHandler(CustomValidationApiException.class)
