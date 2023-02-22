@@ -44,6 +44,7 @@ let item = `<div class="story-list__item">
 		<div class="sl__item__contents__icon">
 
 			<button>
+				${image.likeState}
 				<i class="fas fa-heart active" id="storyLikeIcon-${image.id}" onclick="toggleLike(${image.id})"></i>
 			</button>
 		</div>
