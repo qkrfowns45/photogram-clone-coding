@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,16 +41,20 @@ public class Image {
 	
 	@JsonIgnoreProperties({"images"})
 	@JoinColumn(name="userId")
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
 	
 	//이미지 좋아요
+	@JsonIgnoreProperties({"image"})
 	@OneToMany(mappedBy = "image")
 	private List<Likes> likes;
 	//댓글
 	
 	@Transient //DB에 컬럼이 만들어지지 않는다.
 	private boolean likeState;
+	
+	@Transient
+	private int likeCount;
 	
 	private LocalDateTime createDate;
 	
