@@ -58,7 +58,7 @@ let item = `<div class="story-list__item">
 		<span class="like"><b id="storyLikeCount-${image.id}">${image.likeCount} </b>likes</span>
 
 		<div class="sl__item__contents__content">
-			<p>${image.user.caption}</p>
+			<p>${image.caption}</p>
 		</div>
 
 		<div id="storyCommentList-1">

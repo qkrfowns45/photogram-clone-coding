@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.newbie.photogramstart.domain.image.Image;
 import com.newbie.photogramstart.domain.subscibe.Subscribe;
 import com.newbie.photogramstart.domain.user.User;
@@ -46,6 +47,7 @@ public class Likes { //N
 	private Image image;//1
 	
 	// 오류가 터지고 나서 잡아보자
+	@JsonIgnoreProperties({"images"})
 	@JoinColumn(name = "userId")
 	@ManyToOne
 	private	User user; //1
