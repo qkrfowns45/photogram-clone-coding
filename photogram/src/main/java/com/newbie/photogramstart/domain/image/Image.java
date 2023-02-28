@@ -39,12 +39,14 @@ public class Image {
 	
 	private String postImageUrl; //사진을 전송받아서 그 사진을 서버의 특정 폴더에 저장할 예정 - DB에 저장된 경로를 insert
 	
+	//image가 요청될때 참조(무한 참조 버그 수정)
 	@JsonIgnoreProperties({"images"})
 	@JoinColumn(name="userId")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
 	
 	//이미지 좋아요
+	//image가 요청될때 참조(무한 참조 버그 수정)
 	@JsonIgnoreProperties({"image"})
 	@OneToMany(mappedBy = "image")
 	private List<Likes> likes;
