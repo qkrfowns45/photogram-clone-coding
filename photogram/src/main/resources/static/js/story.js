@@ -168,7 +168,7 @@ function addComment(imageId) {
 		dataType:"json"
 		
 	}).done(res=>{
-		console.log("성공",error);
+		console.log("성공",res);
 	}).fail(error=>{
 		console.log("오류",error);
 	});
