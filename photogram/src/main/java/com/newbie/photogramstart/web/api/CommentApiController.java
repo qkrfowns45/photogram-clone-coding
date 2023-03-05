@@ -34,15 +34,6 @@ public class CommentApiController {
 	@PostMapping("/api/comment")
 	public ResponseEntity<?> commentSave(@Valid @RequestBody CommentDto commentDto,BindingResult bindingResult,@AuthenticationPrincipal PrincipalDetails principalDetails){//@@RequestBody를 선언해야 형식을 dto에 맞게 넣을수 있다.
 		
-		if(bindingResult.hasErrors()) {
-			Map<String, String> errorMap = new HashMap<>();
-			
-			for(FieldError error: bindingResult.getFieldErrors()) {
-				errorMap.put(error.getField(), error.getDefaultMessage());
-			}
-			throw new CustomValidationApiException("유효성 검사 실패함",errorMap);
-		}
-		
 		Comment comment = commentService.댓글쓰기(commentDto.getContent(),commentDto.getImageId(),principalDetails.getUser().getId());
 		
 		return new ResponseEntity<>(new CMRespDto<>(1,"댓글쓰기성공",comment),HttpStatus.OK);
