@@ -11,7 +11,9 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService{
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-		// TODO Auto-generated method stub
-		return super.loadUser(userRequest);
+		
+		OAuth2User oAuth2User = super.loadUser(userRequest);
+		System.out.println(oAuth2User.getAttributes());
+		return null;
 	}
 }
