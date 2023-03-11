@@ -21,7 +21,6 @@ import lombok.RequiredArgsConstructor;
 public class OAuth2DetailsService extends DefaultOAuth2UserService{
 
 	private final UserRepository userRepository;
-	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -31,7 +30,7 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService{
 		Map<String, Object> userInfo = oAuth2User.getAttributes();
 
 		String username = "facebook_"+(String)userInfo.get("id");
-		String password = bCryptPasswordEncoder.encode(UUID.randomUUID().toString());
+		String password = new BCryptPasswordEncoder().encode(UUID.randomUUID().toString());
 		String name = (String)userInfo.get("name"); 
 		String email = (String)userInfo.get("email");
 		
@@ -44,12 +43,13 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService{
 					.password(password)
 					.email(email)
 					.name(name)
+					.role("ROLE_USER")
 					.build();
 			
-			return new PrincipalDetails(userRepository.save(user));
+			return new PrincipalDetails(userRepository.save(user),oAuth2User.getAttributes());
 			
 		}else { //페이스북으로 이미 회원가입이 되어 있다는 뜻
-			return new PrincipalDetails(userEntity);
+			return new PrincipalDetails(userEntity,oAuth2User.getAttributes());
 		}
 		
 		
