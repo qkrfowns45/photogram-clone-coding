@@ -45,6 +45,13 @@ spring:
             scope:
             - public_profile
             - email
+            
+          google:
+            client-id: 473582204131-6hlnb10hhh195r9irpfdgd757r1rjf81.apps.googleusercontent.com 
+            client-secret: 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
+            scope:
+            - email
+            - profile
           
 
 file:
