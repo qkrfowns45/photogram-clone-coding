@@ -26,6 +26,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User{
 	
 	public PrincipalDetails(User user, Map<String, Object> attributes) {
 		this.user = user;
+		this.attributes = attributes;
 	}
 	
 	//권한 : 1개가 아닐수도 있다.

@@ -29,7 +29,13 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService{
 		
 		Map<String, Object> userInfo = oAuth2User.getAttributes();
 
-		String username = "facebook_"+(String)userInfo.get("id");
+		String username = "";
+		String getRegistrationId = userRequest.getClientRegistration().getRegistrationId();
+		if(getRegistrationId.equals("google")) {
+			username = "google_"+(String)userInfo.get("sub");
+		}else {
+			username = "facebook_"+(String)userInfo.get("id");
+		}
 		String password = new BCryptPasswordEncoder().encode(UUID.randomUUID().toString());
 		String name = (String)userInfo.get("name"); 
 		String email = (String)userInfo.get("email");
@@ -37,20 +43,21 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService{
 		User userEntity = userRepository.findByUsername(username);
 		
 		if(userEntity == null) { //페이스북 최초 로그인
-		
-			User user = User.builder()
-					.username(username)
-					.password(password)
-					.email(email)
-					.name(name)
-					.role("ROLE_USER")
-					.build();
-			
-			return new PrincipalDetails(userRepository.save(user),oAuth2User.getAttributes());
-			
-		}else { //페이스북으로 이미 회원가입이 되어 있다는 뜻
-			return new PrincipalDetails(userEntity,oAuth2User.getAttributes());
+		  
+		  User user = User.builder() 
+				  .username(username) 
+				  .password(password)
+				  .email(email) 
+				  .name(name) 
+				  .role("ROLE_USER") 
+				  .build();
+		  
+		  	return new PrincipalDetails(userRepository.save(user),oAuth2User.getAttributes());
+		  
+		}else { //페이스북으로 이미 회원가입이 되어 있다는 뜻 return new
+			return new PrincipalDetails(userEntity,oAuth2User.getAttributes()); 
 		}
+		 
 		
 		
 	}
