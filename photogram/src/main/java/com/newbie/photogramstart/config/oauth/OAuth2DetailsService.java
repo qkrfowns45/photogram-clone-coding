@@ -25,20 +25,39 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService{
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 		
+		System.out.println("userRequest : "+ userRequest.getClientRegistration().getRegistrationId());
 		OAuth2User oAuth2User = super.loadUser(userRequest);
 		
+		System.out.println("oAuth2User : "+oAuth2User.getAttributes());
+		
 		Map<String, Object> userInfo = oAuth2User.getAttributes();
-
+		
+		System.out.println("userInfo : "+userInfo);
+		
 		String username = "";
+		String name = "";
+		String email = "";
 		String getRegistrationId = userRequest.getClientRegistration().getRegistrationId();
+		
 		if(getRegistrationId.equals("google")) {
 			username = "google_"+(String)userInfo.get("sub");
-		}else {
-			username = "facebook_"+(String)userInfo.get("id");
+			email = (String)userInfo.get("email");
+			name = (String)userInfo.get("name");
 		}
+		else if(getRegistrationId.equals("naver")) {
+			Map<String,String> map = (Map)userInfo.get("response");
+			
+			username = "naver_"+(String)map.get("id");
+			email = (String)map.get("email");
+			name = (String)map.get("name");
+		}
+		else {
+			username = "facebook_"+(String)userInfo.get("id");
+			email = (String)userInfo.get("email");
+			name = (String)userInfo.get("name");
+		}
+		
 		String password = new BCryptPasswordEncoder().encode(UUID.randomUUID().toString());
-		String name = (String)userInfo.get("name"); 
-		String email = (String)userInfo.get("email");
 		
 		User userEntity = userRepository.findByUsername(username);
 		

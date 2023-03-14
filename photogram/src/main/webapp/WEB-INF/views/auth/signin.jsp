@@ -52,6 +52,12 @@
                                 <span>Google로 로그인</span>
                             </button>
                         </div>
+                        <div class="login__naver">
+                            <button onclick="javascript:location.href='/oauth2/authorization/naver'">
+                                <i class="fab fa-naver-square"></i>
+                                <span>Naver로 로그인</span>
+                            </button>
+                        </div>
                         <!-- Oauth 소셜로그인end -->
                     </div>
                     
