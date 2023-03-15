@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/1b72597a65.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -48,13 +49,13 @@
                         </div>
                         <div class="login__google">
                             <button onclick="javascript:location.href='/oauth2/authorization/google'">
-                                <i class="fab fa-google-square"></i>
+                                <i class="fab fa-google"></i>
                                 <span>Google로 로그인</span>
                             </button>
                         </div>
                         <div class="login__naver">
                             <button onclick="javascript:location.href='/oauth2/authorization/naver'">
-                                <i class="fab fa-naver-square"></i>
+                                <i class="first fa-solid fa-n"></i>
                                 <span>Naver로 로그인</span>
                             </button>
                         </div>
