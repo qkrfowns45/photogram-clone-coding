@@ -25,11 +25,16 @@
 	<link rel="stylesheet" href="/css/upload.css">
 	<link rel="stylesheet" href="/css/update.css">
 	<link rel="shortcut icon" href="/images/insta.svg">
+	<link rel="stylesheet" href="/css/bootstrap.css">
 	
 	<!-- Fontawesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -42,6 +47,16 @@
 			<a href="/" class="logo">
 				<img src="/images/logo.jpg" alt="">
 			</a>
+			
+			<nav class="navbar bg-body-tertiary" style="margin-top : 30px;">
+			  <div class="container-fluid">
+			    <form class="d-flex" role="search">
+			      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+			      <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+			    </form>
+			  </div>
+			</nav>
+			
 			<nav class="navi">
 				<ul class="navi-list">
 					<li class="navi-item"><a href="/">

@@ -55,7 +55,8 @@
                         </div>
                         <div class="login__naver">
                             <button onclick="javascript:location.href='/oauth2/authorization/naver'">
-                                <i class="first fa-solid fa-n"></i>
+                                <!-- <i class="first fa-solid fa-n"></i> -->
+                                 <img class="naver_log" src="/images/naver.png"></img>
                                 <span>Naver로 로그인</span>
                             </button>
                         </div>
