@@ -25,7 +25,6 @@
 	<link rel="stylesheet" href="/css/upload.css">
 	<link rel="stylesheet" href="/css/update.css">
 	<link rel="shortcut icon" href="/images/insta.svg">
-	<link rel="stylesheet" href="/css/bootstrap.css">
 	
 	<!-- Fontawesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
@@ -34,7 +33,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.js"></script>
 	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -45,18 +43,22 @@
 	<header class="header">
 		<div class="container">
 			<a href="/" class="logo">
-				<img src="/images/logo.jpg" alt="">
+				<img src="/images/logo.png" alt="">
 			</a>
 			
-			<nav class="navbar bg-body-tertiary" style="margin-top : 30px;">
-			  <div class="container-fluid">
-			    <form class="d-flex" role="search">
-			      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-			      <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
-			    </form>
-			  </div>
-			</nav>
-			
+			<form class="d-flex" role="search" style="display:flex;" action="/image/search" method="GET">
+		       <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
+		       <select class="form-control2" name="type">                                                                      
+                <option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected':'' }"/> >게시글</option>                 
+                <option value="C" <c:out value="${pageMaker.cri.type eq 'C' ? 'selected':'' }"/> >내용</option>                 
+                <option value="W" <c:out value="${pageMaker.cri.type eq 'W' ? 'selected':'' }"/> >작성자</option>                
+                <option value="TC" <c:out value="${pageMaker.cri.type eq 'TC' ? 'selected':'' }"/> >제목 or 게시글</option>         
+                <option value="TW" <c:out value="${pageMaker.cri.type eq 'TW' ? 'selected':'' }"/> >제목 or 작성자</option>        
+                <option value="TWC" <c:out value="${pageMaker.cri.type eq 'TWC' ? 'selected':'' }"/> >제목 or 내용 or 작성자</option>
+			   </select>
+		       <button class="h-btn btn-outline-success" type="submit">Search</button>
+		     </form>
+		
 			<nav class="navi">
 				<ul class="navi-list">
 					<li class="navi-item"><a href="/">

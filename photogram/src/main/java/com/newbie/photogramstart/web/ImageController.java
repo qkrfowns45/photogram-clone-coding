@@ -2,6 +2,8 @@ package com.newbie.photogramstart.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,5 +54,13 @@ public class ImageController {
 		imageService.사진업로드(imageUploadDto, principalDetails);
 		
 		return "redirect:/user/"+principalDetails.getUser().getId();
+	}
+	
+	@GetMapping("/image/search")
+	public String search(HttpServletRequest request, Model model) {
+		
+		
+		
+		return "image/search";
 	}
 }
