@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.newbie.photogramstart.config.auth.PrincipalDetails;
 import com.newbie.photogramstart.domain.image.Image;
+import com.newbie.photogramstart.domain.user.User;
 import com.newbie.photogramstart.handler.ex.CustomValidationException;
 import com.newbie.photogramstart.service.ImageService;
 import com.newbie.photogramstart.web.dto.image.ImageUploadDto;
@@ -59,7 +60,17 @@ public class ImageController {
 	@GetMapping("/image/search")
 	public String search(HttpServletRequest request, Model model) {
 		
+		String res = (String)request.getParameter("type");
+		String content = (String)request.getParameter("search");
+		List<User> user = null;
 		
+		if(res.equals("T")) {
+			
+		}else if(res.equals("C")) {
+			
+		}else if(res.equals("W")) {
+			user = imageService.유저검색(content);
+		}
 		
 		return "image/search";
 	}

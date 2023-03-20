@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.newbie.photogramstart.config.auth.PrincipalDetails;
 import com.newbie.photogramstart.domain.image.Image;
 import com.newbie.photogramstart.domain.image.ImageRepository;
+import com.newbie.photogramstart.domain.user.User;
+import com.newbie.photogramstart.domain.user.UserRepository;
 import com.newbie.photogramstart.web.dto.image.ImageUploadDto;
 
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,8 @@ import lombok.RequiredArgsConstructor;
 public class ImageService {
 	
 	private final ImageRepository imageRepository;
+	
+	private final UserRepository userRepository;
 	
 	@Transactional(readOnly = true)
 	public List<Image> 인기사진(){
@@ -71,5 +75,13 @@ public class ImageService {
 		Image image = imageUploadDto.toEntity(imageFileName, principalDetails.getUser());
 		imageRepository.save(image);
 		
+	}
+	
+	@Transactional(readOnly = true) //영속성 컨텍스트에서 변경 감지를 해서, 더티체킹, flush(반영) X
+	public List<User> 유저검색(String content){
+		
+		List<User> user = userRepository.userSearch(content);
+		
+		return user;
 	}
 }
