@@ -9,6 +9,14 @@
 }
 
 /*페이지의 중앙을 잡아줄 컨테이너*/
+.container2 {
+  width: 100%;
+  min-height: 100%;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  height : 1000px;
+}
+
 .container {
   width: 100%;
   min-height: 100%;
@@ -228,7 +236,6 @@ span {
 
 .member-box {
 	display: block;
-    width: 80%;
     height: 34px;
     padding: 6px 12px;
     margin-left : 10%;

@@ -14,8 +14,22 @@
   margin: 0 auto;
 }
 
+.main .container2 {
+  padding-top: 30px;
+  width: 935px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
 /*게시물리스트*/
 .main .container .story-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.main .container2 .story-list {
   display: flex;
   flex-direction: column;
   width: 100%;
