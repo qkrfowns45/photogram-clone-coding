@@ -4,15 +4,10 @@
 
 <main class="main">
 	<section class="container">
-		<!--전체 리스트 시작-->
-		<article class="search-list" id="searchList">
-
-			<!--전체 리스트 아이템-->
-
-
-		</article>
+		<div class="member-box">
+			
+		</div>
 	</section>
 </main>
-<script src="/js/story.js"></script>
 </body>
 </html>
