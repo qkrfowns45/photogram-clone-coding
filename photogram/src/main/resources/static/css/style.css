@@ -235,21 +235,42 @@ span {
 }
 
 .member-box {
-	display: block;
-    height: 34px;
-    padding: 6px 12px;
-    margin-left : 10%;
-    margin-right : 10%; 
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.profile-left {
+  flex-basis: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-left .profile-img-wrap {
+  width: 800px;
+  height: 162px;
+  padding: 6px;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-left .profile-img-wrap img {
+  width: 16%;
+  height: 80%;
+  border-radius: 50%;
+  margin-top : 10px;
+  margin-left : 10px;
+}
+
+.profile-right {
+  flex-basis: 60%;
+}
+
+.profile-detail{
+	display: flex;
 }
