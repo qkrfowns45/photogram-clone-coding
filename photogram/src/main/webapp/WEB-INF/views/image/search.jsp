@@ -4,27 +4,25 @@
 
 <main class="main">
 	<section class="container2">
-		<article class="story-list" id="storyList">
-			<div class="member-box">
-				<div class="profile-left">
-					<div class="profile-img-wrap story-border">
-						<img class="profile-image" src="/images/person.jpeg" onerror="this.src='/images/person.jpeg'" id="userProfileImage">
-					</div>
+		<div class = "profile-box">
+			<div class = "profile-item">
+				<div class = "profile-imagebox">
+					<img class="profile-image" src="/upload/${dto.user.profileImageUrl}"
+						onerror="this.src='/images/person.jpeg'" id="userProfileImage" />
 				</div>
-				
-				<div class="profile-right">
-					<div class="profile-detail">
-						<div>이름</div>
+				<div clss = "profile-detail">
+					<div class="profile-detail-item">
+						user : 
 					</div>
-					<div class="profile-detail">
-						<div>이메일</div>
+					<div class="profile-detail-item">
+						email : 
 					</div>
-					<div class="profile-detail">
-						<div>소개</div>
+					<div class="profile-detail-item">
+						bio : 
 					</div>
 				</div>
 			</div>
-		</article>
+		</div>
 	</section>
 </main>
 </body>

@@ -1,0 +1,39 @@
+@import "header.css";
+@import "footer.css";
+
+/*페이지의 중앙을 잡아줄 컨테이너*/
+.container2 {
+  width: 100%;
+  min-height: 100%;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  height : 1000px;
+}
+
+.profile-box{
+	border: 1px solid #ccc;
+	margin-left: 100px;
+    margin-right: 100px;
+}
+
+.profile-item{
+	display:flex;
+	padding: 10px;
+}
+
+.profile-imagebox{
+	width: 10%;
+}
+
+.profile-imagebox img{
+	width: 100%;
+	border-radius : 50%;
+}
+
+.profile-detail{
+	margin-left : 20px;
+}
+
+.profile-detail-item{
+	margin-top: 10px;
+}

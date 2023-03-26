@@ -8,15 +8,6 @@
   outline: none;
 }
 
-/*페이지의 중앙을 잡아줄 컨테이너*/
-.container2 {
-  width: 100%;
-  min-height: 100%;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  height : 1000px;
-}
-
 .container {
   width: 100%;
   min-height: 100%;
@@ -232,45 +223,4 @@ span {
 .cta.blue {
   background: #0095f6 !important;
   color: #fff !important;
-}
-
-.member-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  height: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.profile-left {
-  flex-basis: 40%;
-  display: flex;
-  justify-content: center;
-}
-
-.profile-left .profile-img-wrap {
-  width: 800px;
-  height: 162px;
-  padding: 6px;
-  border-radius: 50%;
-  position: relative;
-  cursor: pointer;
-}
-
-.profile-left .profile-img-wrap img {
-  width: 16%;
-  height: 80%;
-  border-radius: 50%;
-  margin-top : 10px;
-  margin-left : 10px;
-}
-
-.profile-right {
-  flex-basis: 60%;
-}
-
-.profile-detail{
-	display: flex;
 }
