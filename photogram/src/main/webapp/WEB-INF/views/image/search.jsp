@@ -10,7 +10,7 @@
 					<img class="profile-image" src="/upload/${dto.user.profileImageUrl}"
 						onerror="this.src='/images/person.jpeg'" id="userProfileImage" />
 				</div>
-				<div clss = "profile-detail">
+				<div class = "profile-detail">
 					<div class="profile-detail-item">
 						user : 
 					</div>
@@ -20,6 +20,9 @@
 					<div class="profile-detail-item">
 						bio : 
 					</div>
+				</div>
+				<div class="profile-subscribe">
+					<button class="cta blue" onclick="toggleSubscribe(${u.id},this)">구독하기</button>
 				</div>
 			</div>
 		</div>

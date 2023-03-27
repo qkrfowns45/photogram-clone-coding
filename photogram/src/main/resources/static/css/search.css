@@ -25,15 +25,20 @@
 	width: 10%;
 }
 
+.profile-detail{
+	margin-left : 20px;
+	width : 500px;
+}
+
 .profile-imagebox img{
 	width: 100%;
 	border-radius : 50%;
 }
 
-.profile-detail{
-	margin-left : 20px;
+.profile-detail-item{
+	margin-top: 5px;
 }
 
-.profile-detail-item{
-	margin-top: 10px;
+.profile-subscribe{
+	margin-top : 25px;
 }
