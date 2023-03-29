@@ -70,6 +70,8 @@ public class ImageController {
 			
 		}else if(res.equals("W")) {
 			user = imageService.유저검색(content);
+			model.addAttribute("users",user);
+			System.out.println(user);
 		}
 		
 		return "image/search";
