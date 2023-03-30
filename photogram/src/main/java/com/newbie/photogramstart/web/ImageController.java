@@ -63,6 +63,8 @@ public class ImageController {
 		String res = (String)request.getParameter("type");
 		String content = (String)request.getParameter("search");
 		List<User> user = null;
+		model.addAttribute("type",res);
+		model.addAttribute("search",content);
 		
 		if(res.equals("T")) {
 			

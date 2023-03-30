@@ -48,7 +48,7 @@
 			</a>
 			
 			<form class="d-flex" role="search" style="display:flex;" action="/image/search" method="GET">
-		       <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
+		       <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search" value="${search}">
 		       <select class="form-control2" name="type">                                                                      
                 <option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected':'' }"/> >게시글</option>                 
                 <option value="C" <c:out value="${pageMaker.cri.type eq 'C' ? 'selected':'' }"/> >내용</option>                 

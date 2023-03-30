@@ -13,16 +13,13 @@
 					</div>
 						<div class = "profile-detail">
 							<div class="profile-detail-item">
-								user : 
-								<h4>${users.username}</h4>
+								<p>user : ${users.username}</p>
 							</div>
 							<div class="profile-detail-item">
-								email : 
-								<h4> ${users.email}</h4>
+								<p>email : ${users.email}</p>
 							</div>
 							<div class="profile-detail-item">
-								bio : 
-								<h4> ${users.bio}</h4>
+								<p>bio : ${users.bio}</p>
 							</div>
 						</div>
 					<div class="profile-subscribe">
