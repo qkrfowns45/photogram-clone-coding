@@ -1,5 +1,6 @@
 package com.newbie.photogramstart.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import com.newbie.photogramstart.domain.user.User;
 import com.newbie.photogramstart.handler.ex.CustomValidationException;
 import com.newbie.photogramstart.service.ImageService;
 import com.newbie.photogramstart.web.dto.image.ImageUploadDto;
+import com.newbie.photogramstart.web.dto.user.UserProfileDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -58,11 +60,11 @@ public class ImageController {
 	}
 	
 	@GetMapping("/image/search")
-	public String search(HttpServletRequest request, Model model) {
+	public String search(HttpServletRequest request, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		
 		String res = (String)request.getParameter("type");
 		String content = (String)request.getParameter("search");
-		List<User> user = null;
+		List<UserProfileDto> userProfileDto = new ArrayList<>();
 		model.addAttribute("type",res);
 		model.addAttribute("search",content);
 		
@@ -71,9 +73,8 @@ public class ImageController {
 		}else if(res.equals("C")) {
 			
 		}else if(res.equals("W")) {
-			user = imageService.유저검색(content);
-			model.addAttribute("users",user);
-			System.out.println(user);
+			userProfileDto = imageService.유저검색(content,principalDetails.getUser().getId());
+			model.addAttribute("users",userProfileDto);
 		}
 		
 		return "image/search";

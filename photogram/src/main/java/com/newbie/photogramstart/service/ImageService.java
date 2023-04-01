@@ -3,6 +3,7 @@ package com.newbie.photogramstart.service;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,9 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.newbie.photogramstart.config.auth.PrincipalDetails;
 import com.newbie.photogramstart.domain.image.Image;
 import com.newbie.photogramstart.domain.image.ImageRepository;
+import com.newbie.photogramstart.domain.subscibe.SubscribeRepository;
 import com.newbie.photogramstart.domain.user.User;
 import com.newbie.photogramstart.domain.user.UserRepository;
 import com.newbie.photogramstart.web.dto.image.ImageUploadDto;
+import com.newbie.photogramstart.web.dto.user.UserProfileDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,6 +31,8 @@ public class ImageService {
 	private final ImageRepository imageRepository;
 	
 	private final UserRepository userRepository;
+	
+	private final SubscribeRepository subscribeRepository;
 	
 	@Transactional(readOnly = true)
 	public List<Image> 인기사진(){
@@ -78,10 +83,26 @@ public class ImageService {
 	}
 	
 	@Transactional(readOnly = true) //영속성 컨텍스트에서 변경 감지를 해서, 더티체킹, flush(반영) X
-	public List<User> 유저검색(String content){
+	public List<UserProfileDto> 유저검색(String content,int principalId){
+		
+		List<UserProfileDto> users = new ArrayList<>();
 		
 		List<User> user = userRepository.userSearch(content);
+		for(int i=0; i<user.size(); i++) {
+			UserProfileDto dto = new UserProfileDto();
+			int pageUserid = user.get(i).getId();
+			
+			dto.setUser(user.get(i));
+			dto.setPageOwnerState(pageUserid == principalId); //1은 페이지주인, -1은 주인아닌 다른 유저
+			
+			int subscribeState =  subscribeRepository.mSubscribeState(principalId, pageUserid);
+			int subscribeCount =  subscribeRepository.mSubscribeCount(principalId);
+			
+			dto.setSubscribeState(subscribeState == 1);
+			dto.setSubscribeCount(subscribeCount);
+			users.add(dto);
+		}
 		
-		return user;
+		return users;
 	}
 }

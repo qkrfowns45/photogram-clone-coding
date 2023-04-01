@@ -8,23 +8,28 @@
 			<div class = "profile-box">
 				<div class = "profile-item">
 					<div class = "profile-imagebox">
-						<img class="profile-image" src="/upload/${dto.user.profileImageUrl}"
+						<img class="profile-image" src="/upload/${users.user.profileImageUrl}"
 							onerror="this.src='/images/person.jpeg'" id="userProfileImage" />
 					</div>
 						<div class = "profile-detail">
 							<div class="profile-detail-item">
-								<p>user : ${users.username}</p>
+								<p>user : ${users.user.username}</p>
 							</div>
 							<div class="profile-detail-item">
-								<p>email : ${users.email}</p>
+								<p>email : ${users.user.email}</p>
 							</div>
 							<div class="profile-detail-item">
-								<p>bio : ${users.bio}</p>
+								<p>bio : ${users.user.bio}</p>
 							</div>
 						</div>
-					<div class="profile-subscribe">
-						<button class="cta blue" onclick="toggleSubscribe(${u.id},this)">구독하기</button>
-					</div>
+					<c:choose>
+						<c:when test="${users.subscribeState}">
+							<button class="cta blue" onclick="toggleSubscribe(${dto.users.id},this)">구독취소</button>
+						</c:when>
+						<c:otherwise>
+							<button class="cta" onclick="toggleSubscribe(${dto.users.id},this)">구독하기</button>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</c:forEach>
