@@ -23,11 +23,17 @@
 							</div>
 						</div>
 					<c:choose>
-						<c:when test="${users.subscribeState}">
-							<button class="cta blue" onclick="toggleSubscribe(${dto.users.id},this)">구독취소</button>
+						<c:when test="${users.pageOwnerState}">
 						</c:when>
 						<c:otherwise>
-							<button class="cta" onclick="toggleSubscribe(${dto.users.id},this)">구독하기</button>
+							<c:choose>
+								<c:when test="${users.subscribeState}">
+									<button class="cta blue" onclick="toggleSubscribe(${users.user.id},this)">구독취소</button>
+								</c:when>
+								<c:otherwise>
+									<button class="cta" onclick="toggleSubscribe(${users.user.id},this)">구독하기</button>
+								</c:otherwise>
+							</c:choose>
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -35,5 +41,6 @@
 		</c:forEach>
 	</section>
 </main>
-</body>
-</html>
+
+<script src="/js/search.js"></script>
+<%@ include file="../layout/footer.jsp"%>
